@@ -51,3 +51,10 @@ var data = {
 };
 
 console.log(compile(data));
+
+// Outputs:
+// [ { tag: 'note', pitch: 'a4', dur: 250, start: 0 },
+//   { tag: 'note', pitch: 'b4', dur: 250, start: 250 },
+//   { tag: 'note', pitch: 'c4', dur: 500, start: 500 },
+//   { tag: 'rest', dur: 500, start: 1000 },
+//   { tag: 'note', pitch: 'd4', dur: 500, start: 1500 } ]
