@@ -1,0 +1,33 @@
+start =
+    expression
+
+_ "whitespace" =
+    whitespace*
+
+lineterminator =
+    [\n\r\u2028\u2029]
+
+whitespace =
+    [ \r\n\f\t]
+  / ";;" [^\n]*
+
+validchar =
+    [0-9a-zA-Z_?!+-=@#$%^&*/.]
+
+atom =
+    _ chars:validchar+ _
+    { return chars.join(""); }
+
+list =
+    _ "(" a:atom+ l:list* ")" _
+    { return a.concat(l); }
+
+comment =
+    { return 'comment'; }
+
+line =
+    atom / list
+
+expression =
+    _ l:line? _
+    { return l; }
